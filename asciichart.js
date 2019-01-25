@@ -37,11 +37,11 @@
         for (let y = min2; y <= max2; ++y) { // axis + labels
             let label = format (max - (y - min2) * range / rows, y - min2)
             result[y - min2][Math.max (offset - label.length, 0)] = label
-            result[y - min2][offset - 1] = (y == 0) ? '+' : '┤'
+            result[y - min2][offset - 1] = (y == 0) ? '+' : '+'
         }
 
         let y0 = Math.round (series[0] * ratio) - min2
-        result[rows - y0][offset - 1] = '┼' // first value
+        result[rows - y0][offset - 1] = '+' // first value
 
         for (let x = 0; x < series.length - 1; x++) { // plot the line
             let y0 = Math.round (series[x + 0] * ratio) - min2
