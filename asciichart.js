@@ -37,7 +37,7 @@
         for (let y = min2; y <= max2; ++y) { // axis + labels
             let label = format (max - (y - min2) * range / rows, y - min2)
             result[y - min2][Math.max (offset - label.length, 0)] = label
-            result[y - min2][offset - 1] = (y == 0) ? '┼' : '┤'
+            result[y - min2][offset - 1] = (y == 0) ? '+' : '┤'
         }
 
         let y0 = Math.round (series[0] * ratio) - min2
@@ -47,14 +47,14 @@
             let y0 = Math.round (series[x + 0] * ratio) - min2
             let y1 = Math.round (series[x + 1] * ratio) - min2
             if (y0 == y1) {
-                result[rows - y0][x + offset] = '─'
+                result[rows - y0][x + offset] = '-'
             } else {
-                result[rows - y1][x + offset] = (y0 > y1) ? '╰' : '╭'
-                result[rows - y0][x + offset] = (y0 > y1) ? '╮' : '╯'
+                result[rows - y1][x + offset] = (y0 > y1) ? '+' : '+'
+                result[rows - y0][x + offset] = (y0 > y1) ? '+' : '+'
                 let from = Math.min (y0, y1)
                 let to = Math.max (y0, y1)
                 for (let y = from + 1; y < to; y++) {
-                    result[rows - y][x + offset] = '│'
+                    result[rows - y][x + offset] = '|'
                 }
             }
         }
